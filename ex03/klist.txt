@@ -1,0 +1,5 @@
+Credentials cache: API:8F9741F6-F39F-4CC7-AB1F-69D9EB2364AB
+        Principal: mintkim@42SEOUL.KR
+
+  Issued                Expires             Flags    Principal
+Mar 22 16:22:37 2021  Mar 23 02:22:37 2021  FPRIA  krbtgt/42SEOUL.KR@42SEOUL.KR
