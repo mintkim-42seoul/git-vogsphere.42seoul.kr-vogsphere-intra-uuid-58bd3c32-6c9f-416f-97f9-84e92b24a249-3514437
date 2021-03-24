@@ -1,0 +1,5 @@
+Credentials cache: API:046280AD-5A72-4698-8E47-1C1D92DA9778
+        Principal: mintkim@42SEOUL.KR
+
+  Issued                Expires               Principal
+Mar 24 18:41:06 2021  Mar 25 04:41:02 2021  krbtgt/42SEOUL.KR@42SEOUL.KR
