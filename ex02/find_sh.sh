@@ -1,1 +1,1 @@
-find . -type f -name '*.sh' | awk -F / '{print $3}' | sed 's/\.sh//g'
+find . -name '*.sh' -type f -exec basename {} \; | sed 's/.sh$//g'
