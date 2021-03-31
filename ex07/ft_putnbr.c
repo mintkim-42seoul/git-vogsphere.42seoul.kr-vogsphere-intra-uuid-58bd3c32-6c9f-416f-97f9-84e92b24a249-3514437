@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:21:44 by mintkim           #+#    #+#             */
-/*   Updated: 2021/03/31 13:43:13 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/03/31 23:52:39 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	print1(int num1)
 void	print2(int num2)
 {
 	int a;
-	int b;
 	int c;
 
 	if (num2 == -2147483648)

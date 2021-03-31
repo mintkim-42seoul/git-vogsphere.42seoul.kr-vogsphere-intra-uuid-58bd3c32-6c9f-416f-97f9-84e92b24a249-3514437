@@ -6,11 +6,13 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 21:35:07 by mintkim           #+#    #+#             */
-/*   Updated: 2021/03/31 22:27:57 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/03/31 23:53:43 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+int g_num[10];
 
 void	print(int l)
 {
@@ -20,7 +22,7 @@ void	print(int l)
 	i = 0;
 	while (i < l)
 	{
-		j = num[i] + 48;
+		j = g_num[i] + 48;
 		write(1, &j, 1);
 		++i;
 	}
@@ -33,13 +35,13 @@ void	cal(int m)
 	i = -1;
 	while (++i < m - 1)
 	{
-		if (num[i] >= num[i + 1])
+		if (g_num[i] >= g_num[i + 1])
 		{
 			return ;
 		}
 	}
 	print(m);
-	if (num[0] < 10 - m)
+	if (g_num[0] < 10 - m)
 	{
 		write(1, ", ", 2);
 	}
@@ -48,25 +50,24 @@ void	cal(int m)
 void	ft_print_combn(int n)
 {
 	int i;
-	int *num[10];
 
 	i = -1;
 	while (i < n)
 		++i;
-	num[i] = i;
+	g_num[i] = i;
 	i = -1;
-	while (num[0] <= 10 - n)
+	while (g_num[0] <= 10 - n)
 	{
 		cal(n);
-		num[n - 1]++;
+		g_num[n - 1]++;
 		i = n;
 		while (i > 1)
 		{
 			--i;
-			if (num[i] > 9)
+			if (g_num[i] > 9)
 			{
-				++num[i - 1];
-				num[i] = 0;
+				++g_num[i - 1];
+				g_num[i] = 0;
 			}
 		}
 	}
