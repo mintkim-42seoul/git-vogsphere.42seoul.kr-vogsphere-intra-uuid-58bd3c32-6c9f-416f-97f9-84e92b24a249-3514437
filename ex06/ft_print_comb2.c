@@ -1,34 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 21:25:28 by mintkim           #+#    #+#             */
-/*   Updated: 2021/03/29 21:45:11 by mintkim          ###   ########.fr       */
+/*   Created: 2021/03/31 11:26:00 by mintkim           #+#    #+#             */
+/*   Updated: 2021/03/31 12:20:36 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_is_negative(int n)
+void	print(int e, int f)
 {
-	char N;
+	int a;
+	int b;
+	int c;
+	int d;
 
-	if (n<0)
+	a = e / 10 + 48;
+	b = e % 10 + 48;
+	c = f / 10 + 48;
+	d = f % 10 + 48;
+	write(1, &a, 1);
+	write(1, &b, 1);
+	write(1, " ", 1);
+	write(1, &c, 1);
+	write(1, &d, 1);
+	if (!(e == 98 && f == 99))
 	{
-		N = 'N';
-		write (1, &N, 1);
-	}
-	else
-	{
-		N = 'P';
-		write (1, &N, 1);
+		write(1, ", ", 2);
 	}
 }
 
-int		main()
+void	ft_print_comb2(void)
 {
-	ft_is_negative(-5);
+	int i;
+	int j;
+
+	i = -1;
+	while (++i <= 98)
+	{
+		j = i;
+		while (++j <= 99)
+		{
+			print(i, j);
+		}
+	}
 }
