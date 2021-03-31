@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 19:13:34 by mintkim           #+#    #+#             */
-/*   Updated: 2021/03/29 21:19:03 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/01 00:28:04 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_print_number(void)
 {
-	int a;
+	char a;
 
-	a = 48;
-	while (a < 58)
+	a = '0';
+	while (a <= '9')
 	{
 		write(1, &a, 1);
 		++a;
