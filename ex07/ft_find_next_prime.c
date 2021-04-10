@@ -6,14 +6,14 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 20:56:43 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/10 22:58:25 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/11 01:09:44 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		norec(unsigned int nb)
 {
-	unsigned int i;
-	unsigned int flag;
+	long long i;
+	long long flag;
 
 	if (nb < 2)
 		return (0);
@@ -41,5 +41,7 @@ int		norec(unsigned int nb)
 
 int		ft_find_next_prime(int nb)
 {
+	if (nb <= 2)
+		return (2);
 	return (norec(nb));
 }
