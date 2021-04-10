@@ -6,11 +6,9 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:26:27 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/11 01:10:31 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/11 01:12:41 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int		ft_recursive_power(int nb, int power)
 {
