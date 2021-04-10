@@ -6,69 +6,36 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:21:44 by mintkim           #+#    #+#             */
-/*   Updated: 2021/03/31 23:52:39 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:28:08 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print1(int num1)
+void ft_putnbr(int nb)
 {
-	int a;
-	int b;
-	int c;
+	char c;
+	char d;
 
-	a = num1 / 10;
-	if (a > 10)
+	if(nb == -2147483648)
 	{
-		print1(a);
+		write (1, "-2147483648", 11);
 	}
 	else
 	{
-		c = a + 48;
-		write(1, &c, 1);
-	}
-	b = num1 % 10 + 48;
-	write(1, &b, 1);
-}
-
-void	print2(int num2)
-{
-	int a;
-	int c;
-
-	if (num2 == -2147483648)
-	{
-		num2 = num2 + 1;
-		num2 = -num2;
-		print1(num2 / 10);
-		c = 56;
-		write(1, &c, 1);
-	}
-	else
-	{
-		a = -num2;
-		print1(a);
-	}
-}
-
-void	ft_putnbr(int nb)
-{
-	int e;
-
-	if (nb > 0)
-	{
-		print1(nb);
-	}
-	else if (nb == 0)
-	{
-		nb = nb + 48;
-		write(1, &nb, 1);
-	}
-	else
-	{
-		e = 45;
-		write(1, &e, 1);
-		print2(nb);
+		if (nb < 0)
+		{
+			d = '-';
+			write(1, &d, 1);
+			nb = -nb;
+			ft_putnbr(nb);
+		}
+		else
+		{
+			if (nb > 9)
+				ft_putnbr(nb / 10);
+			c = 48 + nb % 10;
+			write (1, &c, 1);
+		}
 	}
 }

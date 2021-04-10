@@ -6,20 +6,25 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 19:13:34 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/01 00:28:04 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:30:08 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_number(void)
+void	ft_putchar(char a)
 {
-	char a;
+	write(1, &a, 1);
+}
 
-	a = '0';
-	while (a <= '9')
+void	ft_print_numbers(void)
+{
+	char nbr;
+
+	nbr = '0';
+	while (nbr <= '9')
 	{
-		write(1, &a, 1);
-		++a;
+		ft_putchar(nbr);
+		nbr++;
 	}
 }

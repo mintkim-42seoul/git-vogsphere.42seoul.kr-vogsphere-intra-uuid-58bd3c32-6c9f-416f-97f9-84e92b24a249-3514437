@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 21:35:07 by mintkim           #+#    #+#             */
-/*   Updated: 2021/03/31 23:53:43 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:36:41 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,17 @@ void	ft_print_combn(int n)
 {
 	int i;
 
+	if (n > 10 || n <= 0)
+		return ;
 	i = -1;
-	while (i < n)
-		++i;
-	g_num[i] = i;
+	while (++i < n)
+		g_num[i] = i;
 	i = -1;
-	while (g_num[0] <= 10 - n)
+	while (g_num[0] <= (10 - n))
 	{
 		cal(n);
+		if (n == 10)
+			break ;
 		g_num[n - 1]++;
 		i = n;
 		while (i > 1)
