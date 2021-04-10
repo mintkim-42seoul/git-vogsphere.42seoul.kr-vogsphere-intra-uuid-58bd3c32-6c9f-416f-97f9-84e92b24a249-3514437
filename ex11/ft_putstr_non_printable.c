@@ -6,55 +6,42 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:48:01 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/05 19:03:49 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/11 01:36:21 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	change(char c)
+int		ppp(unsigned char a)
 {
-	int		a;
-	int		b;
-	char	d;
+	if (' ' <= a && a <= '~')
+		return (1);
+	return (0);
+}
 
-	a = c;
-	b = (a / 16);
-	d = b + 48;
-	write(1, &d, 1);
-	if (a % 16 > 9)
-	{
-		b = (a % 16) + 87;
-		d = b;
-		write(1, &d, 1);
-	}
-	else
-	{
-		b = a % 16 + 48;
-		d = b;
-		write(1, &d, 1);
-	}
+void	sss(unsigned char a)
+{
+	a = a + '0';
+	if (a > '9')
+		a = a + 39;
+	write(1, &a, 1);
+}
+
+void	print(unsigned char a)
+{
+	write(1, "\\", 1);
+	sss(a / 16);
+	sss(a % 16);
 }
 
 void	ft_putstr_non_printable(char *str)
 {
-	unsigned char	c;
-	int				i;
-
-	i = 0;
-	while (str[i])
+	while (*str)
 	{
-		if (str[i] >= ' ' && str[i] != 127)
-		{
-			c = str[i];
-			write(1, &c, 1);
-		}
+		if (ppp(*str) == 0)
+			print(*str);
 		else
-		{
-			write(1, "\\", 1);
-			c = str[i];
-			change(c);
-		}
-		i++;
+			write(1, str, 1);
+		str++;
 	}
 }
