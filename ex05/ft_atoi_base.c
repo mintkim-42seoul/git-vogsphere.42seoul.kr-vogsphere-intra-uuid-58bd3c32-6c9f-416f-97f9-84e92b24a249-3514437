@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 11:59:00 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/10 12:43:18 by mintkim          ###   ########.fr       */
+/*   Created: 2021/04/10 17:44:22 by mintkim           #+#    #+#             */
+/*   Updated: 2021/04/10 17:45:50 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int		rec(char *base, int radix)
 			j++;
 		}
 		j = 0;
-		while (base[j] != g_digit[g_len - i - 1])
+		while (base[j] != g_digit[g_len - i - 1] && base[j])
 			j++;
+		if (j == radix)
+			return (0);
 		g_cq = dbl * j + g_cq;
 		i++;
 	}
@@ -71,30 +73,27 @@ int		check(char *base)
 int		ft_atoii(char *str)
 {
 	int i;
+	int sign;
 
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+	i = 0;
+	sign = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
 				|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		{
-		}
-		else if (str[i] == '-' || str[i] == '+')
-		{
-			if (g_flag == 2)
-				break ;
-			if (str[i] == '-')
-				g_sign = -g_sign;
-		}
-		else if (str[i] >= 32 && str[i] <= 127)
-		{
-			g_digit[g_cnt++] = str[i];
-			g_flag = 2;
-		}
-		else
-			break ;
+	{
+		i++;
 	}
-	return (g_sign);
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -sign;
+		i++;
+	}
+	while (str[i])
+	{
+		g_digit[g_cnt++] = str[i];
+		i++;
+	}
+	return (sign);
 }
 
 int		ft_atoi_base(char *str, char *base)

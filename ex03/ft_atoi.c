@@ -6,39 +6,34 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 12:30:37 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/10 12:44:11 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/10 17:46:16 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int g_ssign = 1;
-int g_ddigit = 0;
-int g_fflag = 1;
 
 int		ft_atoi(char *str)
 {
 	int i;
+	int sign;
+	int digit;
 
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+	i = 0;
+	sign = 1;
+	digit = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
 				|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		{
-		}
-		else if (str[i] == '-' || str[i] == '+')
-		{
-			if (g_fflag == 2)
-				break ;
-			if (str[i] == '-')
-				g_ssign = -g_ssign;
-		}
-		else if (str[i] >= '0' && str[i] <= '9')
-		{
-			g_ddigit = g_ddigit * 10 + (str[i] - '0');
-			g_fflag = 2;
-		}
-		else
-			break ;
+	{
+		i++;
 	}
-	return (g_ddigit * g_ssign);
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -sign;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		digit = digit * 10 + (str[i] - '0');
+		i++;
+	}
+	return (digit * sign);
 }

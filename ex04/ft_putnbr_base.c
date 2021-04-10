@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:45:05 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/10 12:43:54 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/10 17:46:00 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	recc(char *base, int nbr, int radix)
 
 	origin_radix = radix;
 	cnt = 0;
-	while (nbr / radix > origin_radix)
+	while (nbr / radix >= origin_radix)
 	{
 		radix = radix * origin_radix;
 		cnt++;
@@ -79,11 +79,9 @@ int		ccheck(char *base)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int		radix;
-	int		i;
 	int		minus;
 	char	c;
 
-	i = 0;
 	radix = count(base);
 	if (ccheck(base) == 1)
 	{
@@ -93,7 +91,8 @@ void	ft_putnbr_base(int nbr, char *base)
 			write(1, &c, 1);
 			if (nbr == -2147483648)
 			{
-				minus = -(nbr / radix);
+				minus = nbr / radix;
+				minus = -minus;
 				recc(base, minus, radix);
 				write(1, &base[-(nbr % radix)], 1);
 				return ;
