@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 17:44:22 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/13 00:10:08 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/13 02:49:03 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 char	g_digit[100000];
 int		g_cnt = 0;
+int		g_i = 0;
+int		g_j = 0;
+int		g_sign = 1;
 
 int		check(char *base)
 {
@@ -41,30 +44,33 @@ int		check(char *base)
 	return (1);
 }
 
-int		ft_atoii(char *str)
+void	ft_atoii(char *str, char *base, int radix)
 {
-	int i;
-	int sign;
-
-	i = 0;
-	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-				|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+	while (str[g_i] == ' ' || str[g_i] == '\t' || str[g_i] == '\n'
+				|| str[g_i] == '\v' || str[g_i] == '\f' || str[g_i] == '\r')
+		g_i++;
+	while (str[g_i] == '-' || str[g_i] == '+')
 	{
-		i++;
+		if (str[g_i] == '-')
+			g_sign = -g_sign;
+		g_i++;
 	}
-	while (str[i] == '-' || str[i] == '+')
+	while (str[g_i])
 	{
-		if (str[i] == '-')
-			sign = -sign;
-		i++;
+		g_j = 0;
+		while (base[g_j])
+		{
+			if (base[g_j] == str[g_i])
+			{
+				g_digit[g_cnt++] = str[g_i];
+				break ;
+			}
+			g_j++;
+			if (g_j == radix)
+				return ;
+		}
+		g_i++;
 	}
-	while (str[i])
-	{
-		g_digit[g_cnt++] = str[i];
-		i++;
-	}
-	return (sign);
 }
 
 int		base_check(char *base, char c)
@@ -86,6 +92,8 @@ void	init(void)
 	int i;
 
 	i = 0;
+	g_i = 0;
+	g_sign = 1;
 	while (g_digit[i])
 	{
 		g_digit[i] = 0;
@@ -96,7 +104,6 @@ void	init(void)
 
 int		ft_atoi_base(char *str, char *base)
 {
-	int sign;
 	int i;
 	int radix;
 	int retur;
@@ -109,7 +116,7 @@ int		ft_atoi_base(char *str, char *base)
 		radix++;
 	if (check(base) == 0)
 		return (0);
-	sign = ft_atoii(str);
+	ft_atoii(str, base, radix);
 	while (g_digit[i])
 	{
 		if (base_check(base, g_digit[i]) == -1)
@@ -118,7 +125,7 @@ int		ft_atoi_base(char *str, char *base)
 		retur = retur + base_check(base, g_digit[i]);
 		i++;
 	}
-	if (sign == -1)
+	if (g_sign == -1)
 		retur = -retur;
 	return (retur);
 }
