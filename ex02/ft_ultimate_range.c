@@ -6,9 +6,11 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 19:03:08 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/12 20:49:50 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:25:31 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 int		ft_ultimate_range(int **range, int min, int max)
 {
