@@ -6,91 +6,75 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 04:40:17 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/13 05:40:51 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/15 01:02:45 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int g_count = 0;
-int g_i = 0;
+#include <stdlib.h>
 
-int strlen(char *s1)
+int			same(char *charset, char a)
 {
-	int i;
-
-	i = 0;
-	while (s1[i])
-		i++;
-	return (i);
+	while (*charset)
+	{
+		if (a == *charset)
+			return (1);
+		charset++;
+	}
+	return (0);
 }
 
-void word(char *str, char *charset)
+long long	word(char *str, char *charset)
 {
-	int i;
-	int j;
-	int cnt;
+	long long	cnt;
 
-	i = 0;
-	while (str[i])
+	cnt = 0;
+	while (*str)
 	{
-		j = 0;
-		if (str[i] == charset[j] && str[i] && charset[j])
+		if (same(charset, *str) == 0)
 		{
-			while (j < strlen(charset))
+			cnt++;
+			while (*str && same(charset, *str) == 0)
 			{
-				if (str[i + j] == charset[j] && str[i] && charset[i])
-					cnt++;
-				j++;
-			}
-			if (strlen(charset) == cnt)
-			{
-				g_count++;
-				i = i + strlen(charset);
+				str++;
 			}
 		}
-		i++;
+		str++;
 	}
+	return (cnt);
 }
 
-char	*ft_strncpy(char *str, char *charset, unsigned int n)
+void		copy(char *dest, char *index, char *str)
 {
-	unsigned int i;
-
-	i = 0;
-	while (src[i] && i < n)
+	while (index < str)
 	{
-		dest[i] = src[i];
-		++i;
+		*dest = *index;
+		dest++;
+		index++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		++i;
-	}
-	return (dest);
+	*dest = 0;
 }
 
-char **ft_split(char *str, char *charset)
+char		**ft_split(char *str, char *charset)
 {
-	char **arr;
-	arr = (char **)malloc(g_count * sizeof(char*) + 1);
+	long long	cnt;
+	char		*index;
+	char		**arr;
 
-	while (str[g_i])
+	cnt = 0;
+	arr = (char **)malloc(word(str, charset) * sizeof(char*) + 1);
+	while (*str)
 	{
-		j = 0;
-		if (str[g_i] == charset[j] && str[g_i] && charset[j])
+		if (same(charset, *str) == 0)
 		{
-			while (j < strlen(charset))
-			{
-				if (str[g_i + j] == charset[j] && str[g_i] && charset[g_i])
-					cnt++;
-				j++;
-			}
-			if (strlen(charset) == cnt)
-			{
-				strncpy
-			}
+			index = str;
+			while (*str && same(charset, *str) == 0)
+				str++;
+			arr[cnt] = (char *)malloc(sizeof(char) * (str - index + 1));
+			copy(arr[cnt], index, str);
+			cnt++;
 		}
-		i++;
+		str++;
 	}
-
+	arr[cnt] = 0;
+	return (arr);
 }

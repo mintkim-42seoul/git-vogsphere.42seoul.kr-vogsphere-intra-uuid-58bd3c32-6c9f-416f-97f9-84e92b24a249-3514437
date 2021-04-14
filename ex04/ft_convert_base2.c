@@ -6,15 +6,18 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 00:25:34 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/13 04:35:29 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/14 16:21:38 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void		recc(char *base, long long nbr, int radix, int minus);
+extern char		*g_st;
+extern int		g_cnt;
 
-void		ft_putnbr_base(int nbr, char *base, int radix)
+extern void		recc(char *base, long long nbr, int radix, int minus);
+
+void			ft_putnbr_base(int nbr, char *base, int radix)
 {
 	long long		good;
 	int				minus;
@@ -29,9 +32,10 @@ void		ft_putnbr_base(int nbr, char *base, int radix)
 	}
 	else
 		recc(base, good, radix, minus);
+	g_st[g_cnt] = '\0';
 }
 
-int			base_check(char *base, char c)
+int				base_check(char *base, char c)
 {
 	int i;
 
@@ -45,7 +49,7 @@ int			base_check(char *base, char c)
 	return (-1);
 }
 
-int			check(char *base)
+int				check(char *base)
 {
 	int i;
 	int j;
@@ -71,7 +75,7 @@ int			check(char *base)
 	return (1);
 }
 
-long long	jari(long long digit, int radix)
+long long		jari(long long digit, int radix)
 {
 	long long length;
 

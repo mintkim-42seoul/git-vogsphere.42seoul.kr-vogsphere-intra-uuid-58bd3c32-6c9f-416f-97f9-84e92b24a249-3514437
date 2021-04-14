@@ -6,26 +6,26 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 22:35:59 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/13 04:39:15 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/15 01:17:22 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 
-int				base_check(char *base, char c);
-int				check(char *base);
-void			ft_putnbr_base(int nbr, char *base, int radix);
-long long		jari(long long digit, int radix);
+extern int			base_check(char *base, char c);
+extern int			check(char *base);
+extern void			ft_putnbr_base(int nbr, char *base, int radix);
+extern long long	jari(long long digit, int radix);
 
-char			g_digit[100000];
-char			*g_st;
-int				g_cnt = 0;
-int				g_i = 0;
-int				g_j = 0;
-int				g_sign = 1;
+char				g_digit[100000];
+char				*g_st;
+int					g_cnt = 0;
+int					g_i = 0;
+int					g_j = 0;
+int					g_sign = 1;
 
-void			ft_atoii(char *str, char *base, int radix)
+void				ft_atoii(char *str, char *base, int radix)
 {
 	while (str[g_i] == ' ' || str[g_i] == '\t' || str[g_i] == '\n'
 				|| str[g_i] == '\v' || str[g_i] == '\f' || str[g_i] == '\r')
@@ -54,7 +54,7 @@ void			ft_atoii(char *str, char *base, int radix)
 	}
 }
 
-void			init(void)
+void				init(void)
 {
 	int i;
 
@@ -69,23 +69,23 @@ void			init(void)
 	g_cnt = 0;
 }
 
-void			recc(char *base, long long nbr, int radix, int minus)
+void				recc(char *base, long long nbr, int radix, int minus)
 {
 	if (nbr == 0)
 		return ;
 	if (minus == -1)
 	{
 		recc(base, nbr / radix, radix, minus);
-		g_digit[g_cnt++] = base[nbr % radix];
+		g_st[g_cnt++] = base[nbr % radix];
 	}
 	else
 	{
 		recc(base, nbr / radix, radix, minus);
-		g_digit[g_cnt++] = base[nbr % radix];
+		g_st[g_cnt++] = base[nbr % radix];
 	}
 }
 
-int				ft_atoi_base(char *str, char *base)
+int					ft_atoi_base(char *str, char *base)
 {
 	int i;
 	int radix;
@@ -113,7 +113,7 @@ int				ft_atoi_base(char *str, char *base)
 	return (retur);
 }
 
-char			*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char				*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int radix;
 	int digit;
@@ -129,15 +129,14 @@ char			*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		return (0);
 	if (digit < 0)
 	{
-		g_digit[0] = '-';
+		g_st[0] = '-';
 		g_cnt++;
 	}
 	if (digit == 0)
 	{
-		g_digit[0] = base_to[0];
-		return (g_digit);
+		g_st[0] = base_to[0];
+		return (g_st);
 	}
-	g_st = g_digit;
 	ft_putnbr_base(digit, base_to, radix);
 	return (g_st);
 }
