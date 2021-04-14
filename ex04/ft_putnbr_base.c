@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:45:05 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/12 23:36:12 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:56:42 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_putnbr_base(int nbr, char *base)
 			write(1, &c, 1);
 			good = -good;
 		}
-		recc(base, good, radix);
+		recc(base, good / radix, radix);
 	}
+	write(1, &base[good % radix], 1);
 }
