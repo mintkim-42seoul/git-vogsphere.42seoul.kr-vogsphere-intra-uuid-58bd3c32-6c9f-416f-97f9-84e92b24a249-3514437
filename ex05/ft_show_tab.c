@@ -6,33 +6,21 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:38:32 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/14 14:40:52 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/15 02:06:55 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_stock_str.h"
 
-void	printnum(int num, char *base)
+void	printsize(int num)
 {
-	if (num == 0)
-		return ;
-	printnum(num / 10, base);
-	write(1, &base[num % 10], 1);
-}
-
-void	printsize(char *str)
-{
-	int		i;
-	int		cnt;
-	char	*base;
+	char *base;
 
 	base = "0123456789";
-	i = 0;
-	cnt = 0;
-	while (str[i])
-		i++;
-	printnum(i, base);
+	if (num > 9)
+		printsize(num / 10);
+	write(1, &base[num % 10], 1);
 }
 
 void	printstr(char *str)
@@ -56,7 +44,7 @@ void	ft_show_tab(struct s_stock_str *par)
 	while (par[i].str)
 	{
 		printstr(par[i].str);
-		printsize(par[i].str);
+		printsize(par[i].size);
 		write(1, "\n", 1);
 		printstr(par[i].copy);
 		i++;
