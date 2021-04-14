@@ -6,18 +6,11 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:48:01 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/11 01:36:21 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:33:45 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-int		ppp(unsigned char a)
-{
-	if (' ' <= a && a <= '~')
-		return (1);
-	return (0);
-}
 
 void	sss(unsigned char a)
 {
@@ -32,6 +25,13 @@ void	print(unsigned char a)
 	write(1, "\\", 1);
 	sss(a / 16);
 	sss(a % 16);
+}
+
+int		ppp(unsigned char a)
+{
+	if (' ' <= a && a <= '~')
+		return (1);
+	return (0);
 }
 
 void	ft_putstr_non_printable(char *str)
