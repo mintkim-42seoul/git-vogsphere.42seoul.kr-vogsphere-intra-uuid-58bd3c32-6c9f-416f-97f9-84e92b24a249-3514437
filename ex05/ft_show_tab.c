@@ -6,11 +6,12 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:38:32 by mintkim           #+#    #+#             */
-/*   Updated: 2021/04/13 23:11:06 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/04/14 14:40:52 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "ft_stock_str.h"
 
 void	printnum(int num, char *base)
 {
