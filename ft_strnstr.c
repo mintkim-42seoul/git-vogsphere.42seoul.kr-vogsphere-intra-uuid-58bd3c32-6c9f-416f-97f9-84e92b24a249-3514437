@@ -1,53 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strnstr.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:58:33 by mintkim           #+#    #+#             */
-/*   Updated: 2021/06/29 20:15:24 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/22 13:30:45 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		lenlen(char *leeen)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (*leeen)
-	{
-		i++;
-		leeen++;
-	}
-	return (i);
-}
-
-char	*ft_strnstr(const char *big, const char *little, unsigned int len)
-{
-	unsigned int	i;
-	int				count;
-	char			*cp1;
-	char			*cp2;
-
-	if (lenlen((char *)little) == 0)
+	if (*little == '\0')
 		return ((char *)big);
-	while (*(char *)big && len-- > 0)
+	while (i < len && big[i] != '\0')
 	{
-		cp1 = (char *)big;
-		cp2 = (char *)little;
-		count = 0;
-		i = 0;
-		if (*(char *)big == *(char *)little)
+		j = 0;
+		while (i + j < len && big[i + j] == little[j])
 		{
-			while ((*(char *)cp1++ == *(char *)cp2++) && (i++ <= len))
-				count++;
+			j++;
+			if (little[j] == '\0')
+				return ((char *)&big[i]);
 		}
-		if (count == lenlen((char *)little))
-			return ((char *)big);
-		big++;
+		i++;
 	}
 	return (NULL);
 }

@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 20:09:55 by mintkim           #+#    #+#             */
-/*   Updated: 2021/07/22 13:33:36 by mintkim          ###   ########.fr       */
+/*   Created: 2021/07/22 13:56:27 by mintkim           #+#    #+#             */
+/*   Updated: 2021/07/22 13:59:26 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-static size_t	lenlenn(char *s)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	i;
+	t_list	*alp;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_strlcat(char *dest, char *src, size_t size)
-{
-	size_t	i;
-	size_t	j;
-	size_t	k;
-
-	k = 0;
-	i = lenlenn(dest);
-	j = lenlenn(src);
-	if (size < i + 1)
+	alp = lst;
+	while (alp)
 	{
-		return (j + size);
+		f(alp->content);
+		alp = alp->next;
 	}
-	while (k + i + 1 < size && src[k] != 0)
-	{
-		dest[i + k] = src[k];
-		k++;
-	}
-	dest[i + k] = '\0';
-	return (i + j);
 }

@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 16:03:05 by mintkim           #+#    #+#             */
-/*   Updated: 2021/06/29 22:09:35 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/22 13:48:06 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_bzero(void *s, size_t n)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	if (n == 0)
 		return (s);

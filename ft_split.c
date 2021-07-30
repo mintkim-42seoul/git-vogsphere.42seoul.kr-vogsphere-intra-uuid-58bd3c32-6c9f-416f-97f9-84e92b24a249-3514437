@@ -6,20 +6,34 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:04:19 by mintkim           #+#    #+#             */
-/*   Updated: 2021/06/29 20:04:31 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/30 11:51:50 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			same(char c, char a)
+static char	**free_if_error(char **arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}
+
+static int	same(char c, char a)
 {
 	if (a == c)
 		return (1);
 	return (0);
 }
 
-long long	word(char *str, char c)
+static long long	word(char *str, char c)
 {
 	long long	cnt;
 
@@ -34,12 +48,15 @@ long long	word(char *str, char c)
 				str++;
 			}
 		}
-		str++;
+		if (*str != 0)
+		{
+			str++;
+		}
 	}
 	return (cnt);
 }
 
-void		copy(char *dest, char *index, char *str)
+static void	copy(char *dest, char *index, char *str)
 {
 	while (index < str)
 	{
@@ -50,14 +67,16 @@ void		copy(char *dest, char *index, char *str)
 	*dest = 0;
 }
 
-char		**ft_split(char *str, char c)
+char	**ft_split(char *str, char c)
 {
 	long long	cnt;
 	char		*index;
 	char		**arr;
 
 	cnt = 0;
-	arr = (char **)malloc(word(str, c) * sizeof(char*) + 1);
+	arr = (char **)malloc((word(str, c) + 1) * sizeof(char *));
+	if (arr == NULL)
+		return (0);
 	while (*str)
 	{
 		if (same(c, *str) == 0)
@@ -66,11 +85,13 @@ char		**ft_split(char *str, char c)
 			while (*str && same(c, *str) == 0)
 				str++;
 			arr[cnt] = (char *)malloc(sizeof(char) * (str - index + 1));
-			copy(arr[cnt], index, str);
-			cnt++;
+			if (arr[cnt] == 0)
+				return (free_if_error(arr));
+			copy(arr[cnt++], index, str);
 		}
-		str++;
+		if (*str != 0)
+			str++;
 	}
-	arr[cnt] = 0;
+	arr[cnt] = NULL;
 	return (arr);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:59:20 by mintkim           #+#    #+#             */
-/*   Updated: 2021/06/29 20:02:45 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/01 16:44:30 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	unsigned int	i;
-	char			*b;
+	int		i;
+	char	*ret;
 
-	b = (char*)s;
+	ret = (char *)s;
 	i = 0;
-	while (*s)
+	while (ret[i])
+		i++;
+	while (i >= 0)
 	{
-		s++;
+		if (ret[i] == (char)c)
+			return (&ret[i]);
+		i--;
 	}
-	while (b != s)
-	{
-		if (*(char*)s == (unsigned char)c)
-		{
-			return ((char*)s);
-		}
-		s--;
-	}
-	return (NULL);
+	return (0);
 }

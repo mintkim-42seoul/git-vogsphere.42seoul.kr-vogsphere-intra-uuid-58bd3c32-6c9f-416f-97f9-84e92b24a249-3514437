@@ -6,15 +6,15 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:03:07 by mintkim           #+#    #+#             */
-/*   Updated: 2021/06/29 20:03:20 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/30 11:52:23 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		d_strlen(char *s)
+static int	d_strlen(char *s)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i])

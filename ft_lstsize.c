@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/07 12:30:37 by mintkim           #+#    #+#             */
-/*   Updated: 2021/07/30 11:09:56 by mintkim          ###   ########.fr       */
+/*   Created: 2021/07/08 16:20:03 by mintkim           #+#    #+#             */
+/*   Updated: 2021/07/22 13:43:28 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
-	int	sign;
-	int	digit;
-	int	flag;
 
-	flag = 0;
 	i = 0;
-	sign = 1;
-	digit = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	while (str[i] == '-' || str[i] == '+')
+	while (lst != NULL)
 	{
-		if (flag == 1)
-			return (0);
-		if (str[i] == '-')
-			sign = -sign;
-		flag = 1;
 		i++;
+		lst = lst->next;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-		digit = digit * 10 + (str[i++] - '0');
-	return (digit * sign);
+	return (i);
 }

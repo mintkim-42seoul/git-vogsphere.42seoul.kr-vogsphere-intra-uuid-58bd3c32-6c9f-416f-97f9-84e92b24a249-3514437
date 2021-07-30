@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:10:46 by mintkim           #+#    #+#             */
-/*   Updated: 2021/06/29 22:34:56 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/22 13:31:04 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < n && (unsigned char)s1[i] && (unsigned char)s2[i])

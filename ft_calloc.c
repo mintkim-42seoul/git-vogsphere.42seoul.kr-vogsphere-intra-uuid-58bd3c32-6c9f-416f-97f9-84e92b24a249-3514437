@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:01:04 by mintkim           #+#    #+#             */
-/*   Updated: 2021/06/29 22:13:11 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/22 13:48:30 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	char	*p;
 
 	i = 0;
-	if (!(p = (char *)malloc(count * size)))
+	p = (char *)malloc(count * size);
+	if (p == 0)
 		return (0);
 	while (i < count * size)
 	{

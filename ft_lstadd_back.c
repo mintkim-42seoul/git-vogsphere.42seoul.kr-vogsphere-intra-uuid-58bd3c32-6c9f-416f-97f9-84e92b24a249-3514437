@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 20:09:55 by mintkim           #+#    #+#             */
-/*   Updated: 2021/07/22 13:33:36 by mintkim          ###   ########.fr       */
+/*   Created: 2021/07/08 16:24:12 by mintkim           #+#    #+#             */
+/*   Updated: 2021/07/22 13:44:38 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-static size_t	lenlenn(char *s)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
+	t_list	*def;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_strlcat(char *dest, char *src, size_t size)
-{
-	size_t	i;
-	size_t	j;
-	size_t	k;
-
-	k = 0;
-	i = lenlenn(dest);
-	j = lenlenn(src);
-	if (size < i + 1)
+	def = *lst;
+	if (*lst == NULL && new != NULL)
 	{
-		return (j + size);
+		*lst = new;
+		return ;
 	}
-	while (k + i + 1 < size && src[k] != 0)
+	else if (lst == NULL || new == NULL)
+		return ;
+	while ((*lst)->next != NULL)
 	{
-		dest[i + k] = src[k];
-		k++;
+		*lst = (*lst)->next;
 	}
-	dest[i + k] = '\0';
-	return (i + j);
+	(*lst)->next = new;
+	*lst = def;
 }
