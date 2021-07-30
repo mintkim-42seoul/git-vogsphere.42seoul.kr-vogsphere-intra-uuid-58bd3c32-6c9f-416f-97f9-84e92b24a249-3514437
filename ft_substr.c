@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:05:38 by mintkim           #+#    #+#             */
-/*   Updated: 2021/07/30 14:55:37 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/30 14:59:19 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	j = 0;
 	while (s[i] != '\0')
 	{
-		if (i >= start && j <= len)
+		if (i >= start && j < len)
 			ret[j++] = s[i];
 		i++;
 	}
