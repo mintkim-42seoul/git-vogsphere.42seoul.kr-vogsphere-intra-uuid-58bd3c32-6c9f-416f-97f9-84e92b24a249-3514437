@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:15:02 by mintkim           #+#    #+#             */
-/*   Updated: 2021/07/30 12:16:15 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/30 17:59:13 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			ft_isascii(int c);
 int			ft_isdigit(int c);
 int			ft_isprint(int c);
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
