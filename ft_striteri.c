@@ -6,7 +6,7 @@
 /*   By: mintkim <mintkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 17:34:55 by mintkim           #+#    #+#             */
-/*   Updated: 2021/07/30 17:51:52 by mintkim          ###   ########.fr       */
+/*   Updated: 2021/07/31 18:32:54 by mintkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (s && f)
